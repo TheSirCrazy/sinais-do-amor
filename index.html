@@ -1,147 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Sinais do Amor</title>
   <style>
     body {
-      background-color: #FFCCCB; /* Vermelho fraco */
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: white;
       margin: 0;
-      overflow-x: hidden;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #000;
+      background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%); /* vermelho fraco estilizado */
     }
-
-    .letter {
-      max-width: 700px;
-      margin: 3rem auto;
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 1rem;
+    .carta {
+      max-width: 800px;
+      margin: 50px auto;
+      background-color: rgba(255, 255, 255, 0.8);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      font-size: 18px;
       line-height: 1.6;
-      font-size: 1.1rem;
-      white-space: pre-line;
     }
-
+    .carta h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .eu-te-amo-marquee {
+      white-space: nowrap;
+      overflow: hidden;
+      box-sizing: border-box;
+      font-size: 16px;
+      color: black;
+      margin: 20px 0;
+    }
+    .eu-te-amo-marquee span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: marqueeText 60s linear infinite; /* velocidade reduzida */
+    }
+    @keyframes marqueeText {
+      0%   { transform: translate(0, 0); }
+      100% { transform: translate(-100%, 0); }
+    }
     .carousel {
       display: flex;
-      gap: 1rem;
-      animation: scrollPhotos 22s linear infinite;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      margin: 30px auto;
+      height: 300px;
       align-items: center;
     }
-
-    .carousel img {
-      width: 250px;
-      height: auto;
-      border-radius: 1rem;
+    .carousel-track {
+      display: flex;
+      animation: scrollPhotos 18s linear infinite; /* 10% mais rápido */
     }
-
-    .carousel-wrapper {
-      overflow: hidden;
-      padding: 2rem;
-      background-color: rgba(0, 0, 0, 0.1);
-      white-space: nowrap;
+    .carousel-track img {
+      height: 280px;
+      margin: 0 10px;
+      border-radius: 10px;
     }
-
+    .heart {
+      font-size: 24px;
+      margin: auto 5px;
+      align-self: center;
+    }
     @keyframes scrollPhotos {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-
-    .love-languages {
-      overflow: hidden;
-      white-space: nowrap;
-      box-sizing: border-box;
-      animation: scrollText 30s linear infinite;
-      font-size: 1.2rem;
-      color: black;
-      padding: 1rem;
-      background-color: rgba(255, 255, 255, 0.6);
-    }
-
-    @keyframes scrollText {
-      0% { transform: translateX(100%); }
-      100% { transform: translateX(-100%); }
-    }
-
-    .audio-controls {
-      text-align: center;
-      margin-top: 1rem;
-    }
   </style>
 </head>
 <body>
-  <div class="love-languages" id="languages">
-    Eu te amo ♥ I love you ♥ Je t'aime ♥ Te quiero ♥ Ich liebe dich ♥ Ti amo ♥ Aishiteru ♥ Saranghae ♥ Saya cinta kamu ♥ Te dua ♥ Я тебя люблю ♥ Seni seviyorum ♥ أنا أحبك ♥ 我爱你 ♥ 사랑해요 ♥ Jag älskar dig ♥ Ik hou van jou ♥ Eu te amo ♥...
+
+  <div class="eu-te-amo-marquee">
+    <span>
+      Te amo ❤️ I love you ❤️ Ich liebe dich ❤️ Je t'aime ❤️ Ti amo ❤️ Eu te amo ❤️ 我爱你 ❤️ 사랑해 ❤️ Я тебя люблю ❤️ Te iubesc ❤️ Seni seviyorum ❤️ Kocham cię ❤️ Σ'αγαπώ ❤️ Jag älskar dig ❤️ Volim te ❤️ أحبك ❤️ Ik hou van jou ❤️ Aloha wau ia 'oe ❤️ Ani ohev otach ❤️ Mi amas vin ❤️ Mahal kita ❤️ Mo nifẹ rẹ ❤️ Я кахаю цябе ❤️ ... (até 100 idiomas)
+    </span>
   </div>
 
-  <div class="carousel-wrapper">
-    <div class="carousel">
-      <img src="foto1.jpg" alt="Foto 1">
-      <span>❤️</span>
-      <img src="foto2.jpg" alt="Foto 2">
-      <span>❤️</span>
-      <img src="foto3.jpg" alt="Foto 3">
-      <span>❤️</span>
-      <img src="foto4.jpg" alt="Foto 4">
-      <span>❤️</span>
-      <!-- repete para looping contínuo -->
-      <img src="foto1.jpg" alt="Foto 1">
-      <span>❤️</span>
-      <img src="foto2.jpg" alt="Foto 2">
-      <span>❤️</span>
-      <img src="foto3.jpg" alt="Foto 3">
-      <span>❤️</span>
-      <img src="foto4.jpg" alt="Foto 4">
+  <div class="carousel">
+    <div class="carousel-track">
+      <img src="img1.jpg" alt="Foto 1">
+      <div class="heart">❤️</div>
+      <img src="img2.jpg" alt="Foto 2">
+      <div class="heart">❤️</div>
+      <img src="img3.jpg" alt="Foto 3">
+      <div class="heart">❤️</div>
+      <img src="img1.jpg" alt="Foto 1">
+      <div class="heart">❤️</div>
+      <img src="img2.jpg" alt="Foto 2">
+      <div class="heart">❤️</div>
+      <img src="img3.jpg" alt="Foto 3">
     </div>
   </div>
 
-  <div class="letter">
-    <p><strong>Meu amor,</strong></p>
-    <p>
-    Antes de te conhecer, eu já carregava cicatrizes — você também.
-    Nossas histórias anteriores deixaram marcas, dores silenciosas, e talvez até a certeza de que a gente não queria mais arriscar.
-    Mas o universo, do seu jeito misterioso, foi deixando sinais.
-    Discretos, mas constantes.
-    Te vi antes mesmo de te ver.
-    Em sonhos, em silêncios que pediam por alguém como você.
-    Te reconheci sem nunca ter te tocado.
-    Quando você chegou, algo dentro de mim acalmou.
-    O caos virou paz. A desconfiança virou cuidado.
-    E a vida, que já foi tão pesada, se tornou mais leve com o som do seu riso.
-    Nosso encontro foi um farol na noite mais escura.
-    Foi resposta em forma de abraço.
-    Foi um “eu tô aqui” quando o mundo inteiro parecia distante.
-    Você me faz tão bem, e eu quero que você sinta isso todos os dias.
-    Quero ser o motivo da tua segurança, da tua paz, do teu sorriso bobo ao acordar.
-    Prometo não gerar incertezas onde só deve existir amor.
-    Prometo ser abrigo, presença, verdade.
-    Porque entre todos os sinais, você foi o mais claro de todos:
-    o meu caminho é você.
+  <div class="carta">
+    <h1>Meu amor</h1>
+    <p>Antes de te conhecer, eu já carregava cicatrizes — você também.<br>
+    Nossas histórias anteriores deixaram marcas, dores silenciosas, e talvez até a certeza de que a gente não queria mais arriscar.<br>
+    Mas o universo, do seu jeito misterioso, foi deixando sinais.<br>
+    Discretos, mas constantes.<br>
+    Te vi antes mesmo de te ver.<br>
+    Em sonhos, em silêncios que pediam por alguém como você.<br>
+    Te reconheci sem nunca ter te tocado.<br>
+    Quando você chegou, algo dentro de mim acalmou.<br>
+    O caos virou paz. A desconfiança virou cuidado.<br>
+    E a vida, que já foi tão pesada, se tornou mais leve com o som do seu riso.<br>
+    Nosso encontro foi um farol na noite mais escura.<br>
+    Foi resposta em forma de abraço.<br>
+    Foi um “eu tô aqui” quando o mundo inteiro parecia distante.<br>
+    Você me faz tão bem, e eu quero que você sinta isso todos os dias.<br>
+    Quero ser o motivo da tua segurança, da tua paz, do teu sorriso bobo ao acordar.<br>
+    Prometo não gerar incertezas onde só deve existir amor.<br>
+    Prometo ser abrigo, presença, verdade.<br>
+    Porque entre todos os sinais, você foi o mais claro de todos: o meu caminho é você.<br><br>
 
-    E que seja assim, até o fim.
-    Que sejamos o último amor um do outro — o recomeço que veio pra ficar, a certeza depois de tantas dúvidas, o “para sempre” que faz sentido.
-    Se for pra viver o resto da vida ao lado de alguém, que seja ao lado de quem faz tudo valer a pena: você.
+    E que seja assim, até o fim.<br>
+    Que sejamos o último amor um do outro — o recomeço que veio pra ficar, a certeza depois de tantas dúvidas, o “para sempre” que faz sentido.<br>
+    Se for pra viver o resto da vida ao lado de alguém, que seja ao lado de quem faz tudo valer a pena: você.<br><br>
 
-    <em>
-    "O amor é paciente, o amor é bondoso.
-    Não inveja, não se vangloria, não se orgulha.
-    Não maltrata, não procura seus interesses,
-    não se ira facilmente, não guarda rancor.
-    O amor não se alegra com a injustiça,
-    mas se alegra com a verdade.
-    Tudo sofre, tudo crê, tudo espera, tudo suporta."
-    – 1 Coríntios 13:4-7
-    </em>
+    <em>"O amor é paciente, o amor é bondoso.<br>
+    Não inveja, não se vangloria, não se orgulha.<br>
+    Não maltrata, não procura seus interesses,<br>
+    não se ira facilmente, não guarda rancor.<br>
+    O amor não se alegra com a injustiça,<br>
+    mas se alegra com a verdade.<br>
+    Tudo sofre, tudo crê, tudo espera, tudo suporta."<br>
+    – 1 Coríntios 13:4-7</em>
     </p>
   </div>
 
-  <div class="audio-controls">
-    <audio controls autoplay loop>
-      <source src="melodia.mp3" type="audio/mpeg">
-      Seu navegador não suporta áudio.
-    </audio>
-  </div>
+  <audio id="bg-music" autoplay loop>
+    <source src="melodia.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+  <script>
+    document.addEventListener('click', () => {
+      document.getElementById('bg-music').play();
+    });
+  </script>
 </body>
 </html>
