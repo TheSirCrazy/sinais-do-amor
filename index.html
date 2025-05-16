@@ -250,6 +250,24 @@
       isPlaying = !isPlaying;
     });
   </script>
+<script>
+  function createFloatingHeart() {
+    const heart = document.createElement('span');
+    heart.classList.add('heart-float');
+    heart.innerHTML = '❤️';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (Math.random() * 10 + 16) + 'px';
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000); // remove após animação
+  }
+
+  // Gera corações a cada 300ms
+  setInterval(createFloatingHeart, 300);
+</script>
 
 </body>
 </html>
