@@ -28,11 +28,9 @@
     }
     .carousel {
       display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 20px;
+      overflow: hidden;
       gap: 10px;
-      animation: scrollCarousel 20s linear infinite;
+      animation: scrollCarousel 40s linear infinite;
     }
     .carousel.paused {
       animation-play-state: paused;
@@ -47,7 +45,6 @@
       object-fit: cover;
       border-radius: 12px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      scroll-snap-align: center;
       flex-shrink: 0;
     }
     .letter {
@@ -76,7 +73,7 @@
     }
     .i-love-you-carousel {
       display: inline-block;
-      animation: scrollText 40s linear infinite;
+      animation: scrollText 60s linear infinite;
       color: #000;
       font-size: 1.2em;
       font-style: italic;
@@ -85,30 +82,35 @@
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
-    audio {
-      display: none;
+    .controls {
+      margin: 20px 0;
     }
-    .pause-btn {
+    button {
       background-color: #b85c5c;
       color: white;
       border: none;
       padding: 10px 20px;
-      margin: 10px;
+      margin: 5px;
       border-radius: 8px;
       cursor: pointer;
+      font-size: 1em;
     }
   </style>
 </head>
 <body>
-  <audio autoplay loop>
-    <source src="melodia.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio embutido.
-  </audio>
   <header>
     <h1>Entre tantos sinais, você foi o mais claro de todos.</h1>
   </header>
 
-  <button class="pause-btn" onclick="toggleCarousel()">Pausar</button>
+  <div class="controls">
+    <button onclick="toggleCarousel()" id="carouselBtn">Pausar Carrossel</button>
+    <button onclick="toggleAudio()" id="audioBtn">Tocar Música</button>
+  </div>
+
+  <audio id="backgroundAudio" loop>
+    <source src="melodia.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio embutido.
+  </audio>
 
   <div class="carousel" id="carousel">
     <img src="foto1.jpg" alt="Foto 1" />
@@ -119,6 +121,10 @@
     <img src="foto6.jpg" alt="Foto 6" />
     <img src="foto7.jpg" alt="Foto 7" />
     <img src="foto8.jpg" alt="Foto 8" />
+    <img src="foto1.jpg" alt="Foto 1" />
+    <img src="foto2.jpg" alt="Foto 2" />
+    <img src="foto3.jpg" alt="Foto 3" />
+    <img src="foto4.jpg" alt="Foto 4" />
   </div>
 
   <div class="letter">
@@ -167,15 +173,25 @@
     ];
 
     const loveDiv = document.getElementById('iLoveYou');
-    loveDiv.innerHTML = frases.join(" • ");
+    loveDiv.innerHTML = frases.concat(frases).join(" • ");
 
-    let isPaused = false;
     function toggleCarousel() {
       const carousel = document.getElementById('carousel');
-      const btn = document.querySelector('.pause-btn');
-      isPaused = !isPaused;
-      carousel.classList.toggle('paused', isPaused);
-      btn.textContent = isPaused ? 'Retomar' : 'Pausar';
+      const btn = document.getElementById('carouselBtn');
+      const isPaused = carousel.classList.toggle('paused');
+      btn.textContent = isPaused ? 'Retomar Carrossel' : 'Pausar Carrossel';
+    }
+
+    function toggleAudio() {
+      const audio = document.getElementById('backgroundAudio');
+      const btn = document.getElementById('audioBtn');
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = 'Pausar Música';
+      } else {
+        audio.pause();
+        btn.textContent = 'Tocar Música';
+      }
     }
   </script>
 </body>
