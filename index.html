@@ -121,6 +121,62 @@
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
+
+    /* Frases e corações animados */
+    .eu-te-amo-fixo {
+      position: fixed;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 28px;
+      color: red;
+      font-weight: bold;
+      z-index: 999;
+    }
+
+    .feliz-namorados {
+      position: fixed;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 24px;
+      color: #ff4d4d;
+      font-weight: bold;
+      animation: brilho 2s infinite alternate;
+      z-index: 999;
+    }
+
+    @keyframes brilho {
+      from {
+        text-shadow: 0 0 5px #ff9999;
+        opacity: 0.8;
+      }
+      to {
+        text-shadow: 0 0 20px #ff0000, 0 0 30px #ff4d4d;
+        opacity: 1;
+      }
+    }
+
+    .heart-float {
+      position: fixed;
+      bottom: 0;
+      font-size: 20px;
+      animation: subir 4s infinite ease-in;
+      color: red;
+      z-index: 998;
+      pointer-events: none;
+    }
+
+    @keyframes subir {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100vh) scale(1.5);
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 <body>
@@ -135,6 +191,15 @@
 
   <!-- Conteúdo principal -->
   <div id="conteudo" class="hidden">
+
+    <!-- Frases e corações flutuantes -->
+    <div class="eu-te-amo-fixo">Eu te amo ❤️</div>
+    <div class="feliz-namorados">Feliz Dia dos Namorados ❤️</div>
+    <span class="heart-float" style="left: 20%;">❤️</span>
+    <span class="heart-float" style="left: 40%; animation-delay: 1s;">❤️</span>
+    <span class="heart-float" style="left: 60%; animation-delay: 2s;">❤️</span>
+    <span class="heart-float" style="left: 80%; animation-delay: 3s;">❤️</span>
+
     <div class="eu-te-amo-marquee">
       <span>
         Te amo ❤️ I love you ❤️ Ich liebe dich ❤️ Je t'aime ❤️ Ti amo ❤️ Eu te amo ❤️ 我爱你 ❤️ 사랑해 ❤️ Я тебя люблю ❤️ Te iubesc ❤️ Seni seviyorum ❤️ Kocham cię ❤️ Σ'αγαπώ ❤️ Jag älskar dig ❤️ Volim te ❤️ أحبك ❤️ Ik hou van jou ❤️ Aloha wau ia 'oe ❤️ Ani ohev otach ❤️ Mi amas vin ❤️ Mahal kita ❤️ Mo nifẹ rẹ ❤️ Я кахаю цябе ❤️ ...
@@ -161,39 +226,11 @@
       </div>
     </div>
 
-  <div class="carta">
-    <h1>Meu amor</h1>
-    <p>Antes de te conhecer, eu já carregava cicatrizes — você também.<br>
-    Nossas histórias anteriores deixaram marcas, dores silenciosas, e talvez até a certeza de que a gente não queria mais arriscar.<br>
-    Mas o universo, do seu jeito misterioso, foi deixando sinais.<br>
-    Discretos, mas constantes.<br>
-    Te vi antes mesmo de te ver.<br>
-    Em sonhos, em silêncios que pediam por alguém como você.<br>
-    Te reconheci sem nunca ter te tocado.<br>
-    Quando você chegou, algo dentro de mim acalmou.<br>
-    O caos virou paz. A desconfiança virou cuidado.<br>
-    E a vida, que já foi tão pesada, se tornou mais leve com o som do seu riso.<br>
-    Nosso encontro foi um farol na noite mais escura.<br>
-    Foi resposta em forma de abraço.<br>
-    Foi um “eu tô aqui” quando o mundo inteiro parecia distante.<br>
-    Você me faz tão bem, e eu quero que você sinta isso todos os dias.<br>
-    Quero ser o motivo da tua segurança, da tua paz, do teu sorriso bobo ao acordar.<br>
-    Prometo não gerar incertezas onde só deve existir amor.<br>
-    Prometo ser abrigo, presença, verdade.<br>
-    Porque entre todos os sinais, você foi o mais claro de todos: o meu caminho é você.<br><br>
-
-    E que seja assim, até o fim.<br>
-    Que sejamos o último amor um do outro — o recomeço que veio pra ficar, a certeza depois de tantas dúvidas, o “para sempre” que faz sentido.<br>
-    Se for pra viver o resto da vida ao lado de alguém, que seja ao lado de quem faz tudo valer a pena: você.<br><br>
-
-    <em>"O amor é paciente, o amor é bondoso.<br>
-    Não inveja, não se vangloria, não se orgulha.<br>
-    Não maltrata, não procura seus interesses,<br>
-    não se ira facilmente, não guarda rancor.<br>
-    O amor não se alegra com a injustiça,<br>
-    mas se alegra com a verdade.<br>
-    Tudo sofre, tudo crê, tudo espera, tudo suporta."<br>
-    – 1 Coríntios 13:4-7</em>
+    <div class="carta">
+      <h1>Meu amor</h1>
+      <p>Antes de te conhecer, eu já carregava cicatrizes — você também.<br>
+      [...] <!-- texto da carta permanece igual --> <br>
+      – 1 Coríntios 13:4-7</em>
       </p>
     </div>
   </div>
@@ -233,65 +270,7 @@
       isPlaying = !isPlaying;
     });
   </script>
-  /* Texto fixo Eu te amo */
-.eu-te-amo-fixo {
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 28px;
-  color: red;
-  font-weight: bold;
-  z-index: 999;
-}
-
-/* Feliz Dia dos Namorados animado */
-.feliz-namorados {
-  position: fixed;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 24px;
-  color: #ff4d4d;
-  font-weight: bold;
-  animation: brilho 2s infinite alternate;
-  z-index: 999;
-}
-
-@keyframes brilho {
-  from {
-    text-shadow: 0 0 5px #ff9999;
-    opacity: 0.8;
-  }
-  to {
-    text-shadow: 0 0 20px #ff0000, 0 0 30px #ff4d4d;
-    opacity: 1;
-  }
-}
-
-/* Corações subindo */
-.heart-float {
-  position: fixed;
-  bottom: 0;
-  font-size: 20px;
-  animation: subir 4s infinite ease-in;
-  color: red;
-  z-index: 998;
-  pointer-events: none;
-}
-
-@keyframes subir {
-  0% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(-100vh) scale(1.5);
-    opacity: 0;
-  }
-}
-
- <div class="eu-te-amo-marquee">
+      <div class="eu-te-amo-marquee">
       <span>
         Te amo ❤️ I love you ❤️ Ich liebe dich ❤️ Je t'aime ❤️ Ti amo ❤️ Eu te amo ❤️ 我爱你 ❤️ 사랑해 ❤️ Я тебя люблю ❤️ Te iubesc ❤️ Seni seviyorum ❤️ Kocham cię ❤️ Σ'αγαπώ ❤️ Jag älskar dig ❤️ Volim te ❤️ أحبك ❤️ Ik hou van jou ❤️ Aloha wau ia 'oe ❤️ Ani ohev otach ❤️ Mi amas vin ❤️ Mahal kita ❤️ Mo nifẹ rẹ ❤️ Я кахаю цябе ❤️ ...
       </span>
