@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entre os Sinais, Você</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8d7da; /* Vermelho suave */
+      color: #333;
+      text-align: center;
+      background-image: repeating-linear-gradient(
+        45deg,
+        #f8d7da,
+        #f8d7da 40px,
+        #f5c6cb 40px,
+        #f5c6cb 80px
+      );
+    }
+    header {
+      padding: 40px 20px 20px;
+    }
+    header h1 {
+      font-size: 2em;
+      color: #b85c5c;
+    }
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+      padding: 20px 0;
+    }
+    .carousel {
+      display: flex;
+      gap: 10px;
+      scroll-snap-type: x mandatory;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;  /* IE and Edge */
+    }
+    .carousel::-webkit-scrollbar {
+      display: none; /* Chrome, Safari and Opera */
+    }
+    .carousel img {
+      width: 300px;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      scroll-snap-align: center;
+      flex-shrink: 0;
+      user-select: none;
+      pointer-events: none; /* evita interação com mouse enquanto roda automático */
+    }
+    .pause-btn {
+      position: absolute;
+      right: 30px;
+      top: 10px;
+      background: #b85c5c;
+      border: none;
+      color: white;
+      padding: 8px 14px;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      z-index: 10;
+    }
+    .pause-btn:hover {
+      background-color: #9c4b4b;
+    }
+    .letter {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: left;
+      line-height: 1.6;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
+    .letter h2 {
+      color: #b85c5c;
+      margin-top: 0;
+    }
+    footer {
+      margin: 40px 0;
+      font-size: 1.2em;
+      color: #555;
+    }
+    .i-love-you {
+      font-size: 0.9em;
+      color: #aaa;
+      margin-top: 20px;
+      padding: 10px;
+      font-style: italic;
+      line-height: 1.6;
+    }
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <audio autoplay loop>
+    <source src="melodia.mp3" type="audio/mpeg" />
+    Seu navegador não suporta áudio embutido.
+  </audio>
+  <header>
+    <h1>Entre tantos sinais, você foi o mais claro de todos.</h1>
+  </header>
+
+  <div class="carousel-container">
+    <button class="pause-btn" id="pauseBtn">Pausar</button>
+    <div class="carousel" id="carousel">
+      <img src="foto1.jpg" alt="Foto 1" />
+      <img src="foto2.jpg" alt="Foto 2" />
+      <img src="foto3.jpg" alt="Foto 3" />
+      <img src="foto4.jpg" alt="Foto 4" />
+      <img src="foto5.jpg" alt="Foto 5" />
+      <img src="foto6.jpg" alt="Foto 6" />
+      <img src="foto7.jpg" alt="Foto 7" />
+      <img src="foto8.jpg" alt="Foto 8" />
+    </div>
+  </div>
+
+  <div class="letter">
+    <h2>Minha carta para você</h2>
+    <p>Meu amor,</p>
+    <p>Antes de te conhecer, eu já carregava cicatrizes — você também.<br>
+    Nossas histórias anteriores deixaram marcas, dores silenciosas, e talvez até a certeza de que a gente não queria mais arriscar.</p>
+    <p>Mas o universo, do seu jeito misterioso, foi deixando sinais.<br>
+    Discretos, mas constantes.<br>
+    Te vi antes mesmo de te ver.<br>
+    Em sonhos, em silêncios que pediam por alguém como você.<br>
+    Te reconheci sem nunca ter te tocado.</p>
+    <p>Quando você chegou, algo dentro de mim acalmou.<br>
+    O caos virou paz. A desconfiança virou cuidado.<br>
+    E a vida, que já foi tão pesada, se tornou mais leve com o som do seu riso.</p>
+    <p>Nosso encontro foi um farol na noite mais escura.<br>
+    Foi resposta em forma de abraço.<br>
+    Foi um “eu tô aqui” quando o mundo inteiro parecia distante.</p>
+    <p>Você me faz tão bem, e eu quero que você sinta isso todos os dias.<br>
+    Quero ser o motivo da tua segurança, da tua paz, do teu sorriso bobo ao acordar.</p>
+    <p>Prometo não gerar incertezas onde só deve existir amor.<br>
+    Prometo ser abrigo, presença, verdade.</p>
+    <p><strong>Porque entre todos os sinais, você foi o mais claro de todos:<br>
+    o meu caminho é você.</strong></p>
+  </div>
+
+  <div class="i-love-you">
+    Te amo • I love you • Je t’aime • Ich liebe dich • Te quiero • Eu te amo • 愛してる (Aishiteru) • 사랑해 (Saranghae) • Я тебя люблю (Ya tebya lyublyu) • أحبك (Uhibbuka) • Ti amo • Jeg elsker dig • Σ 'αγαπώ • Ik hou van jou • Te iubesc • Mahal kita • Volim te • Jag älskar dig • Aloha wau ia ‘oe • Ani ohevet otcha • Ndinokuda • Minä rakastan sinua • Ek het jou lief
+  </div>
+
+  <footer>
+    <p>Feliz Dia dos Namorados ❤️</p>
+  </footer>
+
+  <script>
+    const carousel = document.getElementById('carousel');
+    const pauseBtn = document.getElementById('pauseBtn');
+    let isPaused = false;
+
+    // Velocidade do scroll automático (pixels por intervalo)
+    const scrollStep = 2;
+    // Intervalo em milissegundos
+    const intervalTime = 20;
+
+    let scrollInterval;
+
+    function startScroll() {
+      scrollInterval = setInterval(() => {
+        if (!isPaused) {
+          if (carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth)) {
+            carousel.scrollLeft = 0; // volta pro início
+          } else {
+            carousel.scrollLeft += scrollStep;
+          }
+        }
+      }, intervalTime);
+    }
+
+    pauseBtn.addEventListener('click', () => {
+      isPaused = !isPaused;
+      pauseBtn.textContent = isPaused ? 'Retomar' : 'Pausar';
+    });
+
+    startScroll();
+  </script>
+</body>
+</html>
