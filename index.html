@@ -40,9 +40,27 @@
     #start-button:hover {
       background-color: #e60000;
     }
-
     .hidden {
       display: none;
+    }
+
+    #music-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999;
+      background: #fff;
+      border: 2px solid #ff4d4d;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      color: #ff4d4d;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
 
     .carta {
@@ -112,7 +130,10 @@
     <button id="start-button">Começar</button>
   </div>
 
-  <!-- Conteúdo do site -->
+  <!-- Controle de música -->
+  <button id="music-toggle" class="hidden">⏸</button>
+
+  <!-- Conteúdo principal -->
   <div id="conteudo" class="hidden">
     <div class="eu-te-amo-marquee">
       <span>
@@ -143,10 +164,11 @@
     <div class="carta">
       <h1>Meu amor</h1>
       <p>
-        <!-- Coloque sua carta aqui -->
         Antes de te conhecer, eu já carregava cicatrizes — você também.<br>
-        ...
-        – 1 Coríntios 13:4-7
+        Nossas histórias anteriores deixaram marcas, dores silenciosas, e talvez até a certeza de que a gente não queria mais arriscar.<br>
+        Mas o universo, do seu jeito misterioso, foi deixando sinais...<br><br>
+        <em>"O amor é paciente, o amor é bondoso..."<br>
+        – 1 Coríntios 13:4-7</em>
       </p>
     </div>
   </div>
@@ -162,12 +184,28 @@
     const intro = document.getElementById('intro');
     const conteudo = document.getElementById('conteudo');
     const music = document.getElementById('bg-music');
+    const musicToggle = document.getElementById('music-toggle');
+
+    let isPlaying = true;
 
     startBtn.addEventListener('click', () => {
       intro.classList.add('hidden');
       conteudo.classList.remove('hidden');
-      music.play().catch((err) => console.log("Erro ao tocar música:", err));
-      document.body.style.overflow = 'auto'; // permite rolar a página
+      musicToggle.classList.remove('hidden');
+      document.body.style.overflow = 'auto';
+
+      music.play().catch(err => console.log("Erro ao tocar música:", err));
+    });
+
+    musicToggle.addEventListener('click', () => {
+      if (isPlaying) {
+        music.pause();
+        musicToggle.textContent = '▶️';
+      } else {
+        music.play();
+        musicToggle.textContent = '⏸';
+      }
+      isPlaying = !isPlaying;
     });
   </script>
 
