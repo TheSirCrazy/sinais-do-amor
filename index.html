@@ -69,13 +69,21 @@
       font-size: 1.2em;
       color: #555;
     }
-    .i-love-you {
-      font-size: 1em;
+    .i-love-you-container {
+      overflow: hidden;
+      white-space: nowrap;
+      margin-top: 30px;
+    }
+    .i-love-you-carousel {
+      display: inline-block;
+      animation: scrollText 40s linear infinite;
       color: #000;
-      margin-top: 20px;
-      padding: 10px;
+      font-size: 1.2em;
       font-style: italic;
-      line-height: 1.6;
+    }
+    @keyframes scrollText {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
     }
     audio {
       display: none;
@@ -137,7 +145,9 @@
     o meu caminho é você.</strong></p>
   </div>
 
-  <div class="i-love-you" id="iLoveYou"></div>
+  <div class="i-love-you-container">
+    <div class="i-love-you-carousel" id="iLoveYou"></div>
+  </div>
 
   <footer>
     <p>Feliz Dia dos Namorados ❤️</p>
@@ -156,14 +166,8 @@
       "Mahal kita", "Mi amas vin", "Mi te amo", "T'estimo", "Je t’aime", "Aloha wau ia ‘oe", "Volim te", "Ich liebe dich", "Jeg elsker dig", "Ani ohev otach"
     ];
 
-    let index = 0;
     const loveDiv = document.getElementById('iLoveYou');
-
-    function rotateFrases() {
-      loveDiv.textContent = frases[index];
-      index = (index + 1) % frases.length;
-    }
-    setInterval(rotateFrases, 1200);
+    loveDiv.innerHTML = frases.join(" • ");
 
     let isPaused = false;
     function toggleCarousel() {
