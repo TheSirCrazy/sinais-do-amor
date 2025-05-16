@@ -1,221 +1,147 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Entre os Sinais, Você</title>
+  <title>Sinais do Amor</title>
   <style>
     body {
-      margin: 0;
+      background-color: #cc4c4c; /* Vermelho médio */
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #ffe5e5;
-      color: #333;
-      text-align: center;
-      background-image: repeating-linear-gradient(
-        45deg,
-        #ffe5e5,
-        #ffe5e5 40px,
-        #fddddd 40px,
-        #fddddd 80px
-      );
+      color: white;
+      margin: 0;
+      overflow-x: hidden;
     }
-    header {
-      padding: 40px 20px 20px;
+
+    .letter {
+      max-width: 700px;
+      margin: 3rem auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      line-height: 1.6;
+      font-size: 1.1rem;
+      white-space: pre-line;
     }
-    header h1 {
-      font-size: 2em;
-      color: #b85c5c;
-    }
-    .carousel-wrapper {
-      overflow: hidden;
-      width: 100%;
-    }
+
     .carousel {
       display: flex;
-      animation: scrollCarousel 60s linear infinite;
+      gap: 1rem;
+      animation: scrollPhotos 22s linear infinite;
+      align-items: center;
     }
-    .carousel.paused {
-      animation-play-state: paused;
+
+    .carousel img {
+      width: 250px;
+      height: auto;
+      border-radius: 1rem;
     }
-    @keyframes scrollCarousel {
+
+    .carousel-wrapper {
+      overflow: hidden;
+      padding: 2rem;
+      background-color: rgba(0, 0, 0, 0.1);
+      white-space: nowrap;
+    }
+
+    @keyframes scrollPhotos {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
-    .carousel img, .carousel span {
-      width: 300px;
-      height: 400px;
-      object-fit: cover;
-      border-radius: 12px;
-      margin: 0;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-      flex-shrink: 0;
-    }
-    .carousel span {
-      font-size: 3em;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: red;
-    }
-    .letter {
-      max-width: 700px;
-      margin: 40px auto;
-      padding: 0 20px;
-      text-align: left;
-      line-height: 1.6;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-    }
-    .letter h2 {
-      color: #b85c5c;
-      margin-top: 0;
-    }
-    footer {
-      margin: 40px 0;
-      font-size: 1.2em;
-      color: #555;
-    }
-    .i-love-you-container {
+
+    .love-languages {
       overflow: hidden;
       white-space: nowrap;
-      margin-top: 30px;
+      box-sizing: border-box;
+      animation: scrollText 30s linear infinite;
+      font-size: 1.2rem;
+      color: black;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.6);
     }
-    .i-love-you-carousel {
-      display: inline-block;
-      animation: scrollText 80s linear infinite;
-      color: #000;
-      font-size: 1.2em;
-      font-style: italic;
-    }
+
     @keyframes scrollText {
       0% { transform: translateX(100%); }
       100% { transform: translateX(-100%); }
     }
-    .controls {
-      margin: 20px 0;
-    }
-    button {
-      background-color: #b85c5c;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      margin: 5px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1em;
+
+    .audio-controls {
+      text-align: center;
+      margin-top: 1rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Entre tantos sinais, você foi o mais claro de todos.</h1>
-  </header>
-
-  <div class="controls">
-    <button onclick="toggleCarousel()" id="carouselBtn">Pausar Carrossel</button>
-    <button onclick="toggleAudio()" id="audioBtn">Tocar Música</button>
+  <div class="love-languages" id="languages">
+    Eu te amo ♥ I love you ♥ Je t'aime ♥ Te quiero ♥ Ich liebe dich ♥ Ti amo ♥ Aishiteru ♥ Saranghae ♥ Saya cinta kamu ♥ Te dua ♥ Я тебя люблю ♥ Seni seviyorum ♥ أنا أحبك ♥ 我爱你 ♥ 사랑해요 ♥ Jag älskar dig ♥ Ik hou van jou ♥ Eu te amo ♥...
   </div>
 
-  <audio id="backgroundAudio" autoplay loop>
-    <source src="melodia.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio embutido.
-  </audio>
-
   <div class="carousel-wrapper">
-    <div class="carousel" id="carousel">
-      <img src="foto1.jpg" alt="Foto 1" />
+    <div class="carousel">
+      <img src="foto1.jpg" alt="Foto 1">
       <span>❤️</span>
-      <img src="foto2.jpg" alt="Foto 2" />
+      <img src="foto2.jpg" alt="Foto 2">
       <span>❤️</span>
-      <img src="foto3.jpg" alt="Foto 3" />
+      <img src="foto3.jpg" alt="Foto 3">
       <span>❤️</span>
-      <img src="foto4.jpg" alt="Foto 4" />
+      <img src="foto4.jpg" alt="Foto 4">
       <span>❤️</span>
-      <img src="foto5.jpg" alt="Foto 5" />
+      <!-- repete para looping contínuo -->
+      <img src="foto1.jpg" alt="Foto 1">
       <span>❤️</span>
-      <img src="foto6.jpg" alt="Foto 6" />
+      <img src="foto2.jpg" alt="Foto 2">
       <span>❤️</span>
-      <img src="foto7.jpg" alt="Foto 7" />
+      <img src="foto3.jpg" alt="Foto 3">
       <span>❤️</span>
-      <img src="foto8.jpg" alt="Foto 8" />
-      <span>❤️</span>
-      <img src="foto1.jpg" alt="Foto 1" />
-      <span>❤️</span>
-      <img src="foto2.jpg" alt="Foto 2" />
-      <span>❤️</span>
-      <img src="foto3.jpg" alt="Foto 3" />
-      <span>❤️</span>
-      <img src="foto4.jpg" alt="Foto 4" />
+      <img src="foto4.jpg" alt="Foto 4">
     </div>
   </div>
 
   <div class="letter">
-    <h2>Minha carta para você</h2>
-    <p>Meu amor,</p>
-    <p>Antes de te conhecer, eu já carregava cicatrizes — você também.<br>
-    Nossas histórias anteriores deixaram marcas, dores silenciosas, e talvez até a certeza de que a gente não queria mais arriscar.</p>
-    <p>Mas o universo, do seu jeito misterioso, foi deixando sinais.<br>
-    Discretos, mas constantes.<br>
-    Te vi antes mesmo de te ver.<br>
-    Em sonhos, em silêncios que pediam por alguém como você.<br>
-    Te reconheci sem nunca ter te tocado.</p>
-    <p>Quando você chegou, algo dentro de mim acalmou.<br>
-    O caos virou paz. A desconfiança virou cuidado.<br>
-    E a vida, que já foi tão pesada, se tornou mais leve com o som do seu riso.</p>
-    <p>Nosso encontro foi um farol na noite mais escura.<br>
-    Foi resposta em forma de abraço.<br>
-    Foi um “eu tô aqui” quando o mundo inteiro parecia distante.</p>
-    <p>Você me faz tão bem, e eu quero que você sinta isso todos os dias.<br>
-    Quero ser o motivo da tua segurança, da tua paz, do teu sorriso bobo ao acordar.</p>
-    <p>Prometo não gerar incertezas onde só deve existir amor.<br>
-    Prometo ser abrigo, presença, verdade.</p>
-    <p><strong>Porque entre todos os sinais, você foi o mais claro de todos:<br>
-    o meu caminho é você.</strong></p>
+    <p><strong>Meu amor,</strong></p>
+    <p>
+    Antes de te conhecer, eu já carregava cicatrizes — você também.
+    Nossas histórias anteriores deixaram marcas, dores silenciosas, e talvez até a certeza de que a gente não queria mais arriscar.
+    Mas o universo, do seu jeito misterioso, foi deixando sinais.
+    Discretos, mas constantes.
+    Te vi antes mesmo de te ver.
+    Em sonhos, em silêncios que pediam por alguém como você.
+    Te reconheci sem nunca ter te tocado.
+    Quando você chegou, algo dentro de mim acalmou.
+    O caos virou paz. A desconfiança virou cuidado.
+    E a vida, que já foi tão pesada, se tornou mais leve com o som do seu riso.
+    Nosso encontro foi um farol na noite mais escura.
+    Foi resposta em forma de abraço.
+    Foi um “eu tô aqui” quando o mundo inteiro parecia distante.
+    Você me faz tão bem, e eu quero que você sinta isso todos os dias.
+    Quero ser o motivo da tua segurança, da tua paz, do teu sorriso bobo ao acordar.
+    Prometo não gerar incertezas onde só deve existir amor.
+    Prometo ser abrigo, presença, verdade.
+    Porque entre todos os sinais, você foi o mais claro de todos:
+    o meu caminho é você.
+
+    E que seja assim, até o fim.
+    Que sejamos o último amor um do outro — o recomeço que veio pra ficar, a certeza depois de tantas dúvidas, o “para sempre” que faz sentido.
+    Se for pra viver o resto da vida ao lado de alguém, que seja ao lado de quem faz tudo valer a pena: você.
+
+    <em>
+    "O amor é paciente, o amor é bondoso.
+    Não inveja, não se vangloria, não se orgulha.
+    Não maltrata, não procura seus interesses,
+    não se ira facilmente, não guarda rancor.
+    O amor não se alegra com a injustiça,
+    mas se alegra com a verdade.
+    Tudo sofre, tudo crê, tudo espera, tudo suporta."
+    – 1 Coríntios 13:4-7
+    </em>
+    </p>
   </div>
 
-  <div class="i-love-you-container">
-    <div class="i-love-you-carousel" id="iLoveYou"></div>
+  <div class="audio-controls">
+    <audio controls autoplay loop>
+      <source src="melodia.mp3" type="audio/mpeg">
+      Seu navegador não suporta áudio.
+    </audio>
   </div>
-
-  <footer>
-    <p>Feliz Dia dos Namorados ❤️</p>
-  </footer>
-
-  <script>
-    const frases = [
-      "Te amo", "I love you", "Je t’aime", "Ich liebe dich", "Te quiero", "Eu te amo", "愛してる", "사랑해", "Я тебя люблю", "أحبك",
-      "Ti amo", "Jeg elsker dig", "Σ 'αγαπώ", "Ik hou van jou", "Te iubesc", "Mahal kita", "Volim te", "Jag älskar dig", "Aloha wau ia ‘oe", "Ani ohevet otcha",
-      "Ndinokuda", "Minä rakastan sinua", "Ek het jou lief", "Seni seviyorum", "Ngiyakuthanda", "T'estimo", "Jeg elskar teg", "Mo gra thu", "Ngo oi nei", "Mi amas vin",
-      "Mi te ama", "Kocham cię", "Ich lieb di", "Wo ai ni", "Taim i' ngra leat", "Te dua", "Aš tave myliu", "Ana behibek", "Nakupenda", "Phom rak khun",
-      "Kuv hlub koj", "Mwen renmen ou", "Ke a go rata", "Saya cinta padamu", "Main tumse pyaar karta hoon", "Tôi yêu bạn", "Inhobok", "Ek is lief vir jou", "Mahal kita", "Me te quiero",
-      "Te sakam", "Uhibbuka", "Ahavti otach", "Ich han dich lieb", "Ech hun dech gaer", "Ben seni seviyorum", "Volim te", "Mo ni fe e", "Ich lieb disch", "Ana behibek",
-      "Ma armastan sind", "Amo-te", "Ngiyakuthanda", "Taim i' ngra leat", "Miluji tě", "Amo vos", "Taim i' ngra leat", "Kocham cię", "Te dua", "Wo ai ni",
-      "Is breá liom tú", "Inhobok", "Nakupenda", "Main tumse pyar karta hoon", "Te iubesc", "Tôi yêu bạn", "Ana behibek", "S'agapo", "Seni seviyorum", "Ek is lief vir jou",
-      "Mahal kita", "Mi amas vin", "Mi te amo", "T'estimo", "Je t’aime", "Aloha wau ia ‘oe", "Volim te", "Ich liebe dich", "Jeg elsker dig", "Ani ohev otach"
-    ];
-
-    const loveDiv = document.getElementById('iLoveYou');
-    loveDiv.innerHTML = frases.concat(frases).join(" • ");
-
-    function toggleCarousel() {
-      const carousel = document.getElementById('carousel');
-      const btn = document.getElementById('carouselBtn');
-      const isPaused = carousel.classList.toggle('paused');
-      btn.textContent = isPaused ? 'Retomar Carrossel' : 'Pausar Carrossel';
-    }
-
-    function toggleAudio() {
-      const audio = document.getElementById('backgroundAudio');
-      const btn = document.getElementById('audioBtn');
-      if (audio.paused) {
-        audio.play();
-        btn.textContent = 'Pausar Música';
-      } else {
-        audio.pause();
-        btn.textContent = 'Tocar Música';
-      }
-    }
-  </script>
 </body>
 </html>
