@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <title>Sinais do Amor</title>
   <style>
     body {
@@ -10,8 +11,40 @@
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: #000;
-      background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%); /* vermelho fraco estilizado */
+      background: linear-gradient(135deg, #ffe6e6 0%, #ffcccc 100%);
+      overflow: hidden;
     }
+    #intro {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255, 204, 204, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      flex-direction: column;
+    }
+    #start-button {
+      padding: 20px 40px;
+      font-size: 24px;
+      background-color: #ff4d4d;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: background 0.3s;
+    }
+    #start-button:hover {
+      background-color: #e60000;
+    }
+
+    .hidden {
+      display: none;
+    }
+
     .carta {
       max-width: 800px;
       margin: 50px auto;
@@ -37,7 +70,7 @@
     .eu-te-amo-marquee span {
       display: inline-block;
       padding-left: 100%;
-      animation: marqueeText 60s linear infinite; /* velocidade reduzida */
+      animation: marqueeText 60s linear infinite;
     }
     @keyframes marqueeText {
       0%   { transform: translate(0, 0); }
@@ -54,7 +87,7 @@
     }
     .carousel-track {
       display: flex;
-      animation: scrollPhotos 18s linear infinite; /* 10% mais rápido */
+      animation: scrollPhotos 18s linear infinite;
     }
     .carousel-track img {
       height: 280px;
@@ -74,86 +107,69 @@
 </head>
 <body>
 
-  <div class="eu-te-amo-marquee">
-    <span>
-      Te amo ❤️ I love you ❤️ Ich liebe dich ❤️ Je t'aime ❤️ Ti amo ❤️ Eu te amo ❤️ 我爱你 ❤️ 사랑해 ❤️ Я тебя люблю ❤️ Te iubesc ❤️ Seni seviyorum ❤️ Kocham cię ❤️ Σ'αγαπώ ❤️ Jag älskar dig ❤️ Volim te ❤️ أحبك ❤️ Ik hou van jou ❤️ Aloha wau ia 'oe ❤️ Ani ohev otach ❤️ Mi amas vin ❤️ Mahal kita ❤️ Mo nifẹ rẹ ❤️ Я кахаю цябе ❤️ ... (até 100 idiomas)
-    </span>
+  <!-- Tela de início -->
+  <div id="intro">
+    <button id="start-button">Começar</button>
   </div>
 
-  <div class="carousel">
-    <div class="carousel-track">
-      <img src="img1.jpg" alt="Foto 1">
-      <div class="heart">❤️</div>
-      <img src="img2.jpg" alt="Foto 2">
-      <div class="heart">❤️</div>
-      <img src="img3.jpg" alt="Foto 3">
-      <div class="heart">❤️</div>
-      <img src="img4.jpg" alt="Foto 4">
-      <div class="heart">❤️</div>
-      <img src="img1.jpg" alt="Foto 1">
-      <div class="heart">❤️</div>
-      <img src="img2.jpg" alt="Foto 2">
-      <div class="heart">❤️</div>
-      <img src="img3.jpg" alt="Foto 3">
-      <div class="heart">❤️</div>
-      <img src="img4.jpg" alt="Foto 4">
+  <!-- Conteúdo do site -->
+  <div id="conteudo" class="hidden">
+    <div class="eu-te-amo-marquee">
+      <span>
+        Te amo ❤️ I love you ❤️ Ich liebe dich ❤️ Je t'aime ❤️ Ti amo ❤️ Eu te amo ❤️ 我爱你 ❤️ 사랑해 ❤️ Я тебя люблю ❤️ Te iubesc ❤️ Seni seviyorum ❤️ Kocham cię ❤️ Σ'αγαπώ ❤️ Jag älskar dig ❤️ Volim te ❤️ أحبك ❤️ Ik hou van jou ❤️ Aloha wau ia 'oe ❤️ Ani ohev otach ❤️ Mi amas vin ❤️ Mahal kita ❤️ Mo nifẹ rẹ ❤️ Я кахаю цябе ❤️ ...
+      </span>
+    </div>
+
+    <div class="carousel">
+      <div class="carousel-track">
+        <img src="img1.jpg" alt="Foto 1" />
+        <div class="heart">❤️</div>
+        <img src="img2.jpg" alt="Foto 2" />
+        <div class="heart">❤️</div>
+        <img src="img3.jpg" alt="Foto 3" />
+        <div class="heart">❤️</div>
+        <img src="img4.jpg" alt="Foto 4" />
+        <div class="heart">❤️</div>
+        <img src="img1.jpg" alt="Foto 1" />
+        <div class="heart">❤️</div>
+        <img src="img2.jpg" alt="Foto 2" />
+        <div class="heart">❤️</div>
+        <img src="img3.jpg" alt="Foto 3" />
+        <div class="heart">❤️</div>
+        <img src="img4.jpg" alt="Foto 4" />
+      </div>
+    </div>
+
+    <div class="carta">
+      <h1>Meu amor</h1>
+      <p>
+        <!-- Coloque sua carta aqui -->
+        Antes de te conhecer, eu já carregava cicatrizes — você também.<br>
+        ...
+        – 1 Coríntios 13:4-7
+      </p>
     </div>
   </div>
 
-  <div class="carta">
-    <h1>Meu amor</h1>
-    <p>Antes de te conhecer, eu já carregava cicatrizes — você também.<br>
-    Nossas histórias anteriores deixaram marcas, dores silenciosas, e talvez até a certeza de que a gente não queria mais arriscar.<br>
-    Mas o universo, do seu jeito misterioso, foi deixando sinais.<br>
-    Discretos, mas constantes.<br>
-    Te vi antes mesmo de te ver.<br>
-    Em sonhos, em silêncios que pediam por alguém como você.<br>
-    Te reconheci sem nunca ter te tocado.<br>
-    Quando você chegou, algo dentro de mim acalmou.<br>
-    O caos virou paz. A desconfiança virou cuidado.<br>
-    E a vida, que já foi tão pesada, se tornou mais leve com o som do seu riso.<br>
-    Nosso encontro foi um farol na noite mais escura.<br>
-    Foi resposta em forma de abraço.<br>
-    Foi um “eu tô aqui” quando o mundo inteiro parecia distante.<br>
-    Você me faz tão bem, e eu quero que você sinta isso todos os dias.<br>
-    Quero ser o motivo da tua segurança, da tua paz, do teu sorriso bobo ao acordar.<br>
-    Prometo não gerar incertezas onde só deve existir amor.<br>
-    Prometo ser abrigo, presença, verdade.<br>
-    Porque entre todos os sinais, você foi o mais claro de todos: o meu caminho é você.<br><br>
-
-    E que seja assim, até o fim.<br>
-    Que sejamos o último amor um do outro — o recomeço que veio pra ficar, a certeza depois de tantas dúvidas, o “para sempre” que faz sentido.<br>
-    Se for pra viver o resto da vida ao lado de alguém, que seja ao lado de quem faz tudo valer a pena: você.<br><br>
-
-    <em>"O amor é paciente, o amor é bondoso.<br>
-    Não inveja, não se vangloria, não se orgulha.<br>
-    Não maltrata, não procura seus interesses,<br>
-    não se ira facilmente, não guarda rancor.<br>
-    O amor não se alegra com a injustiça,<br>
-    mas se alegra com a verdade.<br>
-    Tudo sofre, tudo crê, tudo espera, tudo suporta."<br>
-    – 1 Coríntios 13:4-7</em>
-    </p>
-  </div>
-
-  <audio id="bg-music" autoplay loop>
-    <source src="melodia.mp3" type="audio/mpeg">
+  <!-- Música -->
+  <audio id="bg-music" preload="auto" loop>
+    <source src="melodia.mp3" type="audio/mpeg" />
     Seu navegador não suporta áudio.
   </audio>
+
   <script>
-    document.addEventListener('click', () => {
-      document.getElementById('bg-music').play();
+    const startBtn = document.getElementById('start-button');
+    const intro = document.getElementById('intro');
+    const conteudo = document.getElementById('conteudo');
+    const music = document.getElementById('bg-music');
+
+    startBtn.addEventListener('click', () => {
+      intro.classList.add('hidden');
+      conteudo.classList.remove('hidden');
+      music.play().catch((err) => console.log("Erro ao tocar música:", err));
+      document.body.style.overflow = 'auto'; // permite rolar a página
     });
   </script>
 
-    </style>
-</head>
-<body>
-
-  <div class="eu-te-amo-marquee">
-    <span>
-      Te amo ❤️ I love you ❤️ Ich liebe dich ❤️ Je t'aime ❤️ Ti amo ❤️ Eu te amo ❤️ 我爱你 ❤️ 사랑해 ❤️ Я тебя люблю ❤️ Te iubesc ❤️ Seni seviyorum ❤️ Kocham cię ❤️ Σ'αγαπώ ❤️ Jag älskar dig ❤️ Volim te ❤️ أحبك ❤️ Ik hou van jou ❤️ Aloha wau ia 'oe ❤️ Ani ohev otach ❤️ Mi amas vin ❤️ Mahal kita ❤️ Mo nifẹ rẹ ❤️ Я кахаю цябе ❤️ ... (até 100 idiomas)
-    </span>
-  </div>
 </body>
 </html>
