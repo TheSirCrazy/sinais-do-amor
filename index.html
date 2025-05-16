@@ -8,15 +8,15 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f8d7da; /* Vermelho suave */
+      background-color: #ffe5e5;
       color: #333;
       text-align: center;
       background-image: repeating-linear-gradient(
         45deg,
-        #f8d7da,
-        #f8d7da 40px,
-        #f5c6cb 40px,
-        #f5c6cb 80px
+        #ffe5e5,
+        #ffe5e5 40px,
+        #fddddd 40px,
+        #fddddd 80px
       );
     }
     header {
@@ -26,24 +26,20 @@
       font-size: 2em;
       color: #b85c5c;
     }
-    .carousel-container {
-      position: relative;
-      max-width: 100%;
-      overflow: hidden;
-      padding: 20px 0;
-    }
     .carousel {
       display: flex;
-      gap: 10px;
-      scroll-snap-type: x mandatory;
       overflow-x: auto;
-      scroll-behavior: smooth;
       scroll-snap-type: x mandatory;
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none;  /* IE and Edge */
+      padding: 20px;
+      gap: 10px;
+      animation: scrollCarousel 20s linear infinite;
     }
-    .carousel::-webkit-scrollbar {
-      display: none; /* Chrome, Safari and Opera */
+    .carousel.paused {
+      animation-play-state: paused;
+    }
+    @keyframes scrollCarousel {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
     .carousel img {
       width: 300px;
@@ -53,26 +49,6 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
       scroll-snap-align: center;
       flex-shrink: 0;
-      user-select: none;
-      pointer-events: none; /* evita interação com mouse enquanto roda automático */
-    }
-    .pause-btn {
-      position: absolute;
-      right: 30px;
-      top: 10px;
-      background: #b85c5c;
-      border: none;
-      color: white;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 14px;
-      cursor: pointer;
-      user-select: none;
-      transition: background-color 0.3s ease;
-      z-index: 10;
-    }
-    .pause-btn:hover {
-      background-color: #9c4b4b;
     }
     .letter {
       max-width: 700px;
@@ -94,8 +70,8 @@
       color: #555;
     }
     .i-love-you {
-      font-size: 0.9em;
-      color: #aaa;
+      font-size: 1em;
+      color: #000;
       margin-top: 20px;
       padding: 10px;
       font-style: italic;
@@ -104,29 +80,37 @@
     audio {
       display: none;
     }
+    .pause-btn {
+      background-color: #b85c5c;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
   <audio autoplay loop>
-    <source src="melodia.mp3" type="audio/mpeg" />
+    <source src="melodia.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio embutido.
   </audio>
   <header>
     <h1>Entre tantos sinais, você foi o mais claro de todos.</h1>
   </header>
 
-  <div class="carousel-container">
-    <button class="pause-btn" id="pauseBtn">Pausar</button>
-    <div class="carousel" id="carousel">
-      <img src="foto1.jpg" alt="Foto 1" />
-      <img src="foto2.jpg" alt="Foto 2" />
-      <img src="foto3.jpg" alt="Foto 3" />
-      <img src="foto4.jpg" alt="Foto 4" />
-      <img src="foto5.jpg" alt="Foto 5" />
-      <img src="foto6.jpg" alt="Foto 6" />
-      <img src="foto7.jpg" alt="Foto 7" />
-      <img src="foto8.jpg" alt="Foto 8" />
-    </div>
+  <button class="pause-btn" onclick="toggleCarousel()">Pausar</button>
+
+  <div class="carousel" id="carousel">
+    <img src="foto1.jpg" alt="Foto 1" />
+    <img src="foto2.jpg" alt="Foto 2" />
+    <img src="foto3.jpg" alt="Foto 3" />
+    <img src="foto4.jpg" alt="Foto 4" />
+    <img src="foto5.jpg" alt="Foto 5" />
+    <img src="foto6.jpg" alt="Foto 6" />
+    <img src="foto7.jpg" alt="Foto 7" />
+    <img src="foto8.jpg" alt="Foto 8" />
   </div>
 
   <div class="letter">
@@ -153,44 +137,42 @@
     o meu caminho é você.</strong></p>
   </div>
 
-  <div class="i-love-you">
-    Te amo • I love you • Je t’aime • Ich liebe dich • Te quiero • Eu te amo • 愛してる (Aishiteru) • 사랑해 (Saranghae) • Я тебя люблю (Ya tebya lyublyu) • أحبك (Uhibbuka) • Ti amo • Jeg elsker dig • Σ 'αγαπώ • Ik hou van jou • Te iubesc • Mahal kita • Volim te • Jag älskar dig • Aloha wau ia ‘oe • Ani ohevet otcha • Ndinokuda • Minä rakastan sinua • Ek het jou lief
-  </div>
+  <div class="i-love-you" id="iLoveYou"></div>
 
   <footer>
     <p>Feliz Dia dos Namorados ❤️</p>
   </footer>
 
   <script>
-    const carousel = document.getElementById('carousel');
-    const pauseBtn = document.getElementById('pauseBtn');
-    let isPaused = false;
+    const frases = [
+      "Te amo", "I love you", "Je t’aime", "Ich liebe dich", "Te quiero", "Eu te amo", "愛してる", "사랑해", "Я тебя люблю", "أحبك",
+      "Ti amo", "Jeg elsker dig", "Σ 'αγαπώ", "Ik hou van jou", "Te iubesc", "Mahal kita", "Volim te", "Jag älskar dig", "Aloha wau ia ‘oe", "Ani ohevet otcha",
+      "Ndinokuda", "Minä rakastan sinua", "Ek het jou lief", "Seni seviyorum", "Ngiyakuthanda", "T'estimo", "Jeg elskar teg", "Mo gra thu", "Ngo oi nei", "Mi amas vin",
+      "Mi te ama", "Kocham cię", "Ich lieb di", "Wo ai ni", "Taim i' ngra leat", "Te dua", "Aš tave myliu", "Ana behibek", "Nakupenda", "Phom rak khun",
+      "Kuv hlub koj", "Mwen renmen ou", "Ke a go rata", "Saya cinta padamu", "Main tumse pyaar karta hoon", "Tôi yêu bạn", "Inhobok", "Ek is lief vir jou", "Mahal kita", "Me te quiero",
+      "Te sakam", "Uhibbuka", "Ahavti otach", "Ich han dich lieb", "Ech hun dech gaer", "Ben seni seviyorum", "Volim te", "Mo ni fe e", "Ich lieb disch", "Ana behibek",
+      "Ma armastan sind", "Amo-te", "Ngiyakuthanda", "Taim i' ngra leat", "Miluji tě", "Amo vos", "Taim i' ngra leat", "Kocham cię", "Te dua", "Wo ai ni",
+      "Is breá liom tú", "Inhobok", "Nakupenda", "Main tumse pyar karta hoon", "Te iubesc", "Tôi yêu bạn", "Ana behibek", "S'agapo", "Seni seviyorum", "Ek is lief vir jou",
+      "Mahal kita", "Mi amas vin", "Mi te amo", "T'estimo", "Je t’aime", "Aloha wau ia ‘oe", "Volim te", "Ich liebe dich", "Jeg elsker dig", "Ani ohev otach"
+    ];
 
-    // Velocidade do scroll automático (pixels por intervalo)
-    const scrollStep = 2;
-    // Intervalo em milissegundos
-    const intervalTime = 20;
+    let index = 0;
+    const loveDiv = document.getElementById('iLoveYou');
 
-    let scrollInterval;
-
-    function startScroll() {
-      scrollInterval = setInterval(() => {
-        if (!isPaused) {
-          if (carousel.scrollLeft >= (carousel.scrollWidth - carousel.clientWidth)) {
-            carousel.scrollLeft = 0; // volta pro início
-          } else {
-            carousel.scrollLeft += scrollStep;
-          }
-        }
-      }, intervalTime);
+    function rotateFrases() {
+      loveDiv.textContent = frases[index];
+      index = (index + 1) % frases.length;
     }
+    setInterval(rotateFrases, 1200);
 
-    pauseBtn.addEventListener('click', () => {
+    let isPaused = false;
+    function toggleCarousel() {
+      const carousel = document.getElementById('carousel');
+      const btn = document.querySelector('.pause-btn');
       isPaused = !isPaused;
-      pauseBtn.textContent = isPaused ? 'Retomar' : 'Pausar';
-    });
-
-    startScroll();
+      carousel.classList.toggle('paused', isPaused);
+      btn.textContent = isPaused ? 'Retomar' : 'Pausar';
+    }
   </script>
 </body>
 </html>
